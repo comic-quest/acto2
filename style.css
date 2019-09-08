@@ -1,0 +1,198 @@
+html{margin:0;padding:0; height:100%;width:100%;}
+
+body{
+    margin:0 !important;
+    margin-top:0;
+    padding:0 !important;
+    background-color:#535353;
+    height:100%;
+    width:100%;
+    
+}
+
+#container{
+    
+    width:900px;
+    height:95%;
+    background-color:#C6C6C6;
+    margin:0 auto;
+    top:1%;
+    position:relative;
+    
+    
+}
+
+#page{
+    width:80%;
+    height:97.5%;
+    margin:auto;
+    top:1.25%;
+    background-color:#EFEFEF;
+    position:relative;
+    display:flex;
+    flex-direction:column
+    
+}
+
+#command{
+    
+    height:80px;
+    width:100%;
+    background-color:#EFEFEF;
+    display:flex;
+    flex-direction:row;
+    
+    flex:0 0 80px;
+}
+
+#commandText{
+    
+    font-family: "courier", "monospace";
+    
+    font-weight:bold;
+    
+    font-size:30px;
+    
+    text-align:center;
+    
+    position:relative;
+    flex:1 0;
+    
+    
+}
+
+#img{
+    
+    width:720px;
+    height:450px;
+    background-color:white;
+    flex: 0 0 450px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+}
+
+
+#text{
+    flex:1 0 auto;
+    font-family: "courier", "monospace";
+    font-size:18px;
+    font-weight:bold;
+    text-align:center;
+    display:inline-block;
+}
+.Erik{
+    color:blueviolet;
+    font-weight:bolder;
+    filter: drop-shadow(5px 2px 2px #4444dd);
+    transition:1s ease-in-out
+    
+}
+
+.Erik:hover{
+    transition:0.5s ease-out;
+    filter:drop-shadow(0px 0px 0px #4444dd)
+    
+}
+
+#coins{
+    width:125px;
+    height:125px;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    border-radius:0px 5px 0px 0px;
+    background-color:#c6c6c6;
+    position:relative;
+}
+#coins img{
+    margin:auto;
+    flex:0 0;
+    position:relative;
+}
+#number{
+    position:absolute;
+   top:30px;
+    left:-50px;
+    font-size:60px;
+       
+}
+
+#timer{
+    text-align:center;
+    flex: 0 0;
+    font-size:60px;
+    position:relative;
+    z-index: 1;
+    text-shadow:0px 0px 15px white;
+    
+}
+
+.Universe{
+    
+    color:darkblue;
+    position:relative;
+    text-shadow:2px 2px 15px darkblue;
+    
+}
+
+#canvas{
+    width:100%;
+    height:100%;
+    z-index:0;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    
+}
+
+#entregar{
+    position:relative;
+    z-index:1;
+    width:226px;
+    flex:0 1 80px;
+    height:80px;
+    margin: 0 auto;
+   
+    background-color:red;
+    border-radius:5px;
+    
+    box-shadow:0px 9px 0px black;
+    
+    display:none;
+    
+    
+}
+
+#entregar p {
+    
+    font-family: "Courier", "monospace";
+    font-size:40px;
+    text-align: center;
+    
+    margin:0;
+    top:15px;
+    position:relative;
+    
+    color:aquamarine;
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+    
+}
+#entregar:active{
+    
+    top:5px;
+    box-shadow:0px 4px 0px black;
+}
+
+#entregar:hover{
+    cursor:pointer;
+    
+}
+
