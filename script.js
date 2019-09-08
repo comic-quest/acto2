@@ -8,61 +8,10 @@ var number = document.getElementById("number");
 
 var coins = 0;
 
-
-var socket = io();
-
-socket.on('connect', function () {
-    socket.send('hi');
-
-    socket.on('coins', function (count) {
-        coins = count;
-      number.innerHTML = coins;
-    });
-  });
-
-var canvas = document.getElementById("canvas");
-
-var ctx = canvas.getContext("2d");
-
-var entregar = document.getElementById("entregar");
-
 var darken = 1;
 
 var from=1,to=0.5
 
-
-    
-
-    
-    function anim(from,to){
-        
-        $({ n: from }).animate({ n: to}, {
-    duration: 10000,
-    step: function(now, fx) {
-        darken = now;
-        draw();
-        
-    },
-    complete:function(){
-        
-        setTimeout(function(){anim(to,from)},1000);
-    }
-});
-        
-    }
-anim(from,to);
-
-function draw(){
-    
-    var grd = ctx.createLinearGradient(0,0,720,450);
-    
-grd.addColorStop(0,"rgb(0, 0,"+139*darken+")");
-grd.addColorStop(1,"rgb("+128*darken+", 0, "+128*darken+")");
-    
-    ctx.fillStyle = grd;
-    ctx.fillRect(0,0,720,450)
-    
-}
 
 
 
@@ -95,20 +44,7 @@ var difTiempo  = horaDelRegalo.getTime()-horaActual
 if(difTiempo <= 0){
    
     //se acabó la espera.
-    timer.innerHTML="Su presente está disponible.";
     
-    entregar.style.display="block";
-    
-    entregar.onclick = function(){
-        if(coins === 0){return}
-        
-        socket.emit("entregar","hee hee");
-        
-        timer.innerHTML = "Ha adquirido su presente. Los detalles le serán enviados en discord."
-        coins = 0;
-        number.innerHTML = coins;
-        
-    }
     
     
    }else{
