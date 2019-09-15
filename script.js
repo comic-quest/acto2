@@ -4,6 +4,33 @@
   window.requestAnimationFrame = requestAnimationFrame;
 })();
 
+var timer = document.getElementById("timer");
+
+var test = 0.0001;
+
+var horaDelRegalo = new Date();
+var porcent = document.getElementById("porcent");
+
+horaDelRegalo.setUTCFullYear(2019);
+horaDelRegalo.setUTCMonth(9);
+horaDelRegalo.setUTCDate(12);
+horaDelRegalo.setUTCHours(18);
+horaDelRegalo.setUTCMinutes(0);
+horaDelRegalo.setUTCSeconds(0);
+horaDelRegalo.setUTCMilliseconds(0);
+
+var comienzo = new Date();
+
+comienzo.setUTCFullYear(2019);
+comienzo.setUTCMonth(8);
+comienzo.setUTCDate(14);
+comienzo.setUTCHours(9);
+comienzo.setUTCMinutes(0);
+comienzo.setUTCSeconds(0);
+comienzo.setUTCMilliseconds(0);
+
+
+
 var number = document.getElementById("number");
 
 var coins = 0;
@@ -12,79 +39,107 @@ var darken = 1;
 
 var from=1,to=0.5
 
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d")
+var container = document.getElementById("container");
 
 
-
-
-
-
-
-var timer = document.getElementById("timer");
-
-var horaDelRegalo = new Date(2019, 08, 09, 12, 00, 00, 0);
-//var horaDelRegalo = new Date(2019, 07, 28, 12, 00, 00, 0);
-
-var segundoAnterior;
-
-console.log(horaDelRegalo.toString())
-
-var animFrame = requestAnimationFrame(update);
-
-function update(){
+function resize(){
+    
+    var width = container.offsetWidth;
     
     
+    canvas.width = width;
+    canvas.height = Math.floor(width*0.2);
+    
+    draw(getPercentage());
     
 
-var horaActual = Date.now();
+}
+resize();
 
 
+window.addEventListener("resize", resize);
 
-var difTiempo  = horaDelRegalo.getTime()-horaActual
-
-if(difTiempo <= 0){
+function draw(percent){
+     canvas.width = canvas.width;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    
    
-    //se acabó la espera.
+    
+    
+    ctx.fillStyle="grey";
+
+    ctx.beginPath();
+ctx.arc(canvas.height/2,canvas.height/2, canvas.height/2, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.fillRect(canvas.height/2,0,canvas.width-canvas.height,canvas.height);
+    ctx.beginPath();
+    ctx.arc(canvas.width-canvas.height/2,canvas.height/2, canvas.height/2, 0, 2 * Math.PI);
+    ctx.fill();
     
     
     
-   }else{
-      var animFrame = requestAnimationFrame(update);
-       
-       
-      var s = Math.floor(difTiempo/1000);
-      var m = Math.floor(s/60);
-              s = s % 60;
-      var h = Math.floor(m/60);
-       m = m % 60;
-       
-      var d = Math.floor(h/24);
-       h = h % 24;
-       
-       
-       var segundoActual = Math.floor(s);
-       
-       if(!segundoAnterior){
-          
-           updateTime(segundoActual,m,h,d);
-           segundoAnterior = segundoActual;
-        return;
-           
-          }else{
-              
-              if(segundoAnterior !== segundoActual){
-                  
-                  updateTime(s,m,h,d);
-                  segundoAnterior = segundoActual;
-                  return
-              }
-              
-              
-          }
-       
-       
-   }
+    ctx.fillStyle="green"
+        
+    ctx.beginPath();
+    
+    ctx.rect(0,0,canvas.width*percent,canvas.height);
+        ctx.clip()
+    
+        ctx.beginPath();
+ctx.arc(canvas.height/2,canvas.height/2, canvas.height/2, 0, 2 * Math.PI);
+    ctx.fill();
+    ctx.fillRect(canvas.height/2,0,canvas.width-canvas.height,canvas.height);
+    ctx.beginPath();
+    ctx.arc(canvas.width-canvas.height/2,canvas.height/2, canvas.height/2, 0, 2 * Math.PI);
+    ctx.fill();
     
     
+}
+
+
+
+
+
+setInterval(update,41);
+
+
+
+function update(){//
+    
+   
+    
+
+    
+
+var porcentaje = getPercentage();
+    
+    draw(getPercentage());
+    
+
+    
+    
+
+    
+
+    
+}//
+
+function getPercentage(){
+
+    var horaActual = Date.now();
+
+var porcentaje = (horaActual-comienzo.getTime())/(horaDelRegalo.getTime()-comienzo.getTime())
+
+var p = porcentaje*100;
+    if(p>=100){p=100}
+
+var texto = (Math.floor(p* 100) / 100)+""
+    
+    porcent.innerHTML = texto+"%";
+
+return porcentaje
     
 }
 
