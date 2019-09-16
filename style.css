@@ -21,6 +21,7 @@ body{
     display:flex;
     flex-direction:column;
     justify-content: center;
+    z-index:-2;
 }
 
 
@@ -34,19 +35,34 @@ body{
     display:none;
 }
 
+#logocontainer{
+ color:white;
+    font-size:6vw;
+    text-align:center;
+    vertical-align:middle;
+    position:relative;
+    flex: 0 1;
+    z-index:1;
+
+}
+
 #Titulo{
  color:white;
     font-size:6vw;
     text-align:center;
     vertical-align:middle;
+    position:relative;
+    z-index:1;
     
-    flex: 0 1;
 }
+
+
 #canvas-wrap{
  position:relative;
     width:100%;
     
     flex: 0 0 auto;
+    z-index:1;
     
 }
 
@@ -61,4 +77,17 @@ body{
     color:white;
     font-size:6vw;
     
+    
+}
+
+#logo{
+    
+    width:40vw;
+    height:40vw;
+    position:absolute;
+    top:-12vw;
+    left:32vw;
+    margin:auto;
+   z-index:-1;
+    opacity:100;
 }
