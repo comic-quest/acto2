@@ -28,7 +28,7 @@ comienzo.setUTCHours(9);
 comienzo.setUTCMinutes(0);
 comienzo.setUTCSeconds(0);
 comienzo.setUTCMilliseconds(0);
-
+var logo = document.getElementById("logo");
 
 
 var number = document.getElementById("number");
@@ -100,9 +100,9 @@ ctx.arc(canvas.height/2,canvas.height/2, canvas.height/2, 0, 2 * Math.PI);
 
 
 
+var set = false;
 
-
-setInterval(update,41);
+var yeet = setInterval(update,41);
 
 
 
@@ -115,7 +115,23 @@ function update(){//
 
 var porcentaje = getPercentage();
     
-    draw(getPercentage());
+
+    if(porcentaje>=1){
+        if(set){
+            console.log("yeet")
+            porcent.innerHTML="Ha ocurrido una excepción. Por favor, contacte con el\n técnico responsable."
+            logo.src="logo-glitch.gif"
+    
+            clearTimeout(yeet);
+        }else{
+           draw(1);
+        set=true; 
+        }
+        
+       }else{
+        draw(getPercentage());
+       }
+   
     
 
     
