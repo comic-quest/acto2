@@ -3,6 +3,7 @@
                               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
   window.requestAnimationFrame = requestAnimationFrame;
 })();
+var set = false;
 
 var timer = document.getElementById("timer");
 
@@ -46,11 +47,18 @@ var container = document.getElementById("container");
 
 function resize(){
     
+    
+    
     var width = container.offsetWidth;
     
     
     canvas.width = width;
     canvas.height = Math.floor(width*0.2);
+    
+    if(set){
+       draw(1);
+        return
+       }
     
     draw(getPercentage());
     
@@ -100,7 +108,7 @@ ctx.arc(canvas.height/2,canvas.height/2, canvas.height/2, 0, 2 * Math.PI);
 
 
 
-var set = false;
+
 
 var yeet = setInterval(update,41);
 
